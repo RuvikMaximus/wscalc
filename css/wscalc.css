@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+button {
+    margin: 10px;
+}
+p {
+    display: block;
+}
+section{
+    margin: 0;
+}
+.lines{
+    text-align: center;
+}
+.base {
+    background-color: #f5f5f5;
+    padding: 15px;
+}
+.unit-class {
+    width: 90px;
+}
+.parameter-class {
+    width: 50px;
+}
+.form-control:disabled{
+background-color: #f9f9f9;
+}
+.input-data {
+    margin-bottom: 20px;
+}
+.select-buttons {
+    margin-bottom: 10px;
+}
+.title-text {
+    text-align: center;
+    font-size: 22pt;
+    background-color: rgb(221, 221, 221);
+    padding: 20px;
+}
