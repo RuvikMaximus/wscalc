@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Расчет свойств воды</title>
+    <meta charset="utf-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="css/wscalc.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -34,7 +35,7 @@
                                 <div class="input-data">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <ws-parameter name ="P" desc="Давление" unit="МПа" min="0" max="1000" v-model="P" v-on:keyup = "refreshMessage()"></ws-parameter>
+                                            <ws-parameter name ="P" desc="Давление" unit="МПа" min="0.00001" max="22" v-model="P" v-on:keyup = "refreshMessage()"></ws-parameter>
                                         </div>
                                         <div class="col-md-6">
                                             <ws-parameter readonly name = "X" desc = "Степень сухости пара" v-model = "X"></ws-parameter>
@@ -47,8 +48,6 @@
                                     <ws-parameter readonly name = "S" desc = "Энтропия" unit = "кДж/кг&#176;K" v-model = "S"></ws-parameter>
                                     <ws-parameter readonly name = "H" desc = "Энтальпия" unit = "кДж/кг" v-model = "H"></ws-parameter>
                                     <ws-parameter readonly name = "U" desc = "Внутреняя энергия" unit = "кДж/кг" v-model = "U"></ws-parameter>
-                                    <!--ws-parameter readonly name = "Cp" desc = "Изобарная теплоемкость" unit = "Дж/кг" v-model = "Cp"></ws-parameter>
-                                    <ws-parameter readonly name = "Cv" desc = "Изохорная теплоемкость" unit = "Дж/кг" v-model = "Cv"></ws-parameter-->
                                     <ws-parameter readonly name = "W" desc = "Скорость звука" unit = "м/с" v-model = "W"></ws-parameter>
                                 </div>
                             </form>

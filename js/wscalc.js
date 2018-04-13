@@ -22,9 +22,8 @@ Vue.component('ws-parameter', {
   </div>',
   computed: {
       wrongvalue: function (){
-          if ( this.value == null|| this.value.length == 0)
-          return false;
-          return (this.value < this.min || this.value > this.max);
+          if (!(this.min && this.max)) return false;
+          return !( this.value && Number(this.value) >= Number(this.min) && Number(this.value) <= Number(this.max));
       },
   },
   methods: {
@@ -50,23 +49,33 @@ new Vue ({
         Cp: '',
         Cv: ''
     },
-        methods: {
-            refreshMessage() {
+    methods: {
+        clearFields() {
+            this.V = '';
+            this.S = '';
+            this.H = '';
+            this.U = '';
+            this.W = '';
+            this.T = '';
+        },
+        sendRequest() {
             this.$http.jsonp('http://new.thermalmodeler.ru/api/water/saturationline/?P='+this.P+';X='+this.X).then(response => {
                 this.V = response.body.V;
                 this.S = response.body.S;
                 this.H = response.body.H;
                 this.U = response.body.U;
-                this.X = response.body.X;
-                this.Cp = response.body.Cp;
-                this.Cv = response.body.Cv;
+                //this.Cp = response.body.Cp;
+                //this.Cv = response.body.Cv;
                 this.W = response.body.W;
                 this.T = response.body.T;
-                    });
-                    },
-                    refreshX: function(X) {
-                        this.X = X;
-                        this.refreshMessage ();
-                    }
-                }
-            })
+            });
+        },
+        refreshMessage() {
+            this.P ? this.sendRequest() : this.clearFields();
+        },
+        refreshX: function(X) {
+            this.X = X;
+            this.refreshMessage ();
+        }
+    }
+})
